@@ -1,0 +1,91 @@
+#!/bin/bash
+
+#############################################
+######## Random Password Generator ##########
+#############################################
+
+# Defining colours for the text
+green="\033[0;32m"  # Setting variable 'green' to green colour code
+blue="\033[0;34m"   # Setting variable 'blue' to blue colour code
+reset="\033[0m"     # Setting variable 'reset' to reset colour code
+
+# Displaying the logo
+echo ".------..------..------." 
+echo "|R.--. ||P.--. ||G.--. |"
+echo "| :(): || :/\: || :/\: |"
+echo "| ()() || (__) || :\/: |"
+echo "| '--'R|| '--'P|| '--'G|"
+echo "'------''------''------'"
+
+# Displaying the title with green text
+echo -e "${green}Random Password Generator${reset}"
+
+# Starting an infinite loop
+while true; do
+
+# Displaying the menu
+echo "Please select an option:"
+echo "1. Generate random passwords"
+echo "2. Launch Random Password Manager (RPM)"
+echo "3. Exit"
+
+# Reading user input and storing it in variable 'option'
+read option
+
+case $option in
+1) # Option 1: Generate random passwords
+
+# Asking the user to input the password length 
+echo "Please enter the length of the password (between 8 - 48): "
+
+# Reading user input and storing it in variable 'pass_length'
+read pass_length
+
+# Starting an infinite loop for generating passwords
+while true; do
+	echo -ne "${blue}Generating password."  # Displaying a message with blue text
+	for i in {1..10}; do   # Starting a loop to simulate progress bar
+		echo -ne "."           # Printing a dot to show progress
+		sleep 0.5              # Sleeping for half a second before printing the next dot
+done
+echo -e "${reset}"     # Resetting text colour
+
+# Generating a random password
+password=$(openssl rand -base64 48 | cut -c1-$pass_length)
+echo "Generated password: $password"
+
+# Asking the user if they want to add the password to the manager
+read -p "Do you want to add this password to the password manager? (y/n) " add_to_manager
+
+if [ "$add_to_manager" = "y" ] || [ "$add_to_manager" = "Y" ]; then
+	echo "Please enter the username of the account: "
+	read account
+	echo "$account:$password" >> passwords.txt  # Storing the account and password in the file
+	echo "Password added successfully"
+ 	fi
+
+# Asking the user if they want to generate another password
+read -p "Generate another password? (y/n/q) " generate_another
+
+case $generate_another in
+	[yY]) ;;  # Continuing the loop
+	[nN]|[qQ]) break 2 ;;  # Breaking out of both loops if the user input is 'n', 'N', 'q', or 'Q'
+	*) echo "Invalid input, please try again" ;;  # Displaying an error message if the user input is invalid
+	esac
+	done
+	;;
+
+	2) # Option 2: Launch Password Manager
+	echo "Launching Random Password Manager..."
+	./RPM
+	;;
+
+	3) # Option 3: Exit
+	echo "Exiting script..."; exit 0 # Exiting the script with exit status 0 (success)
+	;;
+
+	*) # Default option: Invalid input
+	echo "Invalid input, please try again"
+	;;
+esac
+done
