@@ -11,7 +11,7 @@ This is a simple Bash script that generates random passwords and allows the user
 ## Usage
 1. Clone the repository.
 2. Open a terminal and navigate to the cloned repository directory.
-3. Run the script using the following command: ./pass_generator
+3. Run the script using the following command: ./RPG
 4. Follow the on-screen instructions to generate passwords and/or manage them using the password manager.
 
 ## Options
@@ -19,8 +19,9 @@ This is a simple Bash script that generates random passwords and allows the user
 2. Launch Password Manager: Allows the user to launch the password manager.
 3. Exit: Exits the script.
 
+
 # Random Password Manager
-The password manager is a separate Bash script (pass_manager) that allows the user to view and manage the passwords they have generated using the password generator script. The password manager provides the following options:
+The password manager is a separate Bash script that allows the user to view and manage the passwords they have generated using the password generator script. The password manager provides the following options:
 
 1. View passwords: Displays a list of all stored passwords.
 2. Search passwords: Allows the user to search for a specific password by account name.
@@ -41,4 +42,4 @@ Contributions are welcome! If you have any suggestions, please feel free to crea
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/username/repo/blob/master/LICENSE).
+This project is licensed under the [MIT License](https://github.com/Linf0rd/random-password-generator/blob/main/LICENSE).
