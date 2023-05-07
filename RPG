@@ -4,13 +4,15 @@
 ######## Random Password Generator ##########
 #############################################
 
-# Defining colours for the text
+# Defining colours and other escape sequences
 green="\033[0;32m"  # Setting variable 'green' to green colour code
 blue="\033[0;34m"   # Setting variable 'blue' to blue colour code
 reset="\033[0m"     # Setting variable 'reset' to reset colour code
+underline="\033[4m" # Setting variable 'underline' to underline text
 
 # Displaying the logo
-echo ".------..------..------." 
+
+echo ".------..------..------."
 echo "|R.--. ||P.--. ||G.--. |"
 echo "| :(): || :/\: || :/\: |"
 echo "| ()() || (__) || :\/: |"
@@ -24,7 +26,7 @@ echo -e "${green}Random Password Generator${reset}"
 while true; do
 
 # Displaying the menu
-echo "Please select an option:"
+echo -e "${underline}Please select an option:${reset}"
 echo "1. Generate random passwords"
 echo "2. Launch Random Password Manager (RPM)"
 echo "3. Exit"
@@ -81,7 +83,7 @@ case $generate_another in
 	;;
 
 	3) # Option 3: Exit
-	echo "Exiting script..."; exit 0 # Exiting the script with exit status 0 (success)
+	echo "Quitting script..."; exit 0 # Exiting the script with exit status 0 (success)
 	;;
 
 	*) # Default option: Invalid input

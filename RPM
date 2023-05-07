@@ -4,10 +4,11 @@
 ######## Random Password Manager ############
 #############################################
 
-# Defining colours for the text
-green="\033[0;32m"
-blue="\033[0;34m"
-reset="\033[0m"
+# Defining colours and other escape sequences for the text
+green="\033[0;32m"  # Setting variable 'green' to green colour code
+blue="\033[0;34m"   # Setting variable 'blue' to blue colour code
+reset="\033[0m"     # Setting variable 'reset' to reset colour code
+underline="\033[4m" # Setting variable 'underline' to underline text
 
 # Displaying the logo
 echo ".------..------..------." 
@@ -23,7 +24,7 @@ echo -e "${green}Random Password Manager${reset}"
 # Starting an infinite loop
 while true; do
 	# Asking the user for their choice
-	echo "Please choose an option: "
+	echo -e "${underline}Please choose an option:${reset}"
 	echo "1. Add password"
 	echo "2. View passwords"
 	echo "3. Delete password"
@@ -53,7 +54,7 @@ case $choice in
 	if [ ! -f passwords.txt ]; then
 	echo "No passwords found"
 	else
-	echo "Please enter the name of the account: "
+	echo "Please enter the username of the account: "
 	read account
 	sed -i "/^$account:/d" passwords.txt  # Deleting the account and password from the file
 	echo "Password deleted successfully"
@@ -64,12 +65,12 @@ case $choice in
 	./RPG ;;
 
 	5) # Quitting
-	echo "Exiting script..."
+	echo "Quitting script..."
 	exit
 	;;
 
 	*) # Invalid choice
-	echo "Invalid choice, please try again"
+	echo "Invalid choice, please try again."
 	;;
 	esac
 done
