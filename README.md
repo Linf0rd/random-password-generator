@@ -1,5 +1,5 @@
 # Random Password Generator
-This is a simple Bash script that generates random passwords and allows the user to store them in a password manager.
+This is a Bash script that generates random passwords and allows the user to store them in a password manager.
 
 ## Features
 - Generate random passwords of any length between 8 and 48 characters.
