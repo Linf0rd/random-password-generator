@@ -1,0 +1,76 @@
+#!/bin/bash
+
+#############################################
+######## Random Password Manager ############
+#############################################
+
+# Defining colours for the text
+green="\033[0;32m"
+blue="\033[0;34m"
+reset="\033[0m"
+
+# Displaying the logo
+echo ".------..------..------." 
+echo "|R.--. ||P.--. ||M.--. |"
+echo "| :(): || :/\: || :/\: |"
+echo "| ()() || (__) || :\/: |"
+echo "| '--'R|| '--'P|| '--'M|"
+echo "'------''------''------'"
+
+# Displaying the title with green text
+echo -e "${green}Random Password Manager${reset}"
+
+# Starting an infinite loop
+while true; do
+	# Asking the user for their choice
+	echo "Please choose an option: "
+	echo "1. Add password"
+	echo "2. View passwords"
+	echo "3. Delete password"
+	echo "4. Launch Random Password Generator (RPG)"
+	echo "5. Quit"
+	read choice
+
+case $choice in
+	1) # Adding password
+	echo "Please enter the name of the account: "
+	read account
+	echo "Please enter the password: "
+	read password
+	echo "$account:$password" >> passwords.txt  # Storing the account and password in the file
+	echo "Password added successfully"
+	;;
+
+	2) # Viewing passwords
+	if [ ! -f passwords.txt ]; then
+	echo "No passwords found"
+	else
+	cat passwords.txt
+	fi
+	;;
+
+	3) # Deleting password
+	if [ ! -f passwords.txt ]; then
+	echo "No passwords found"
+	else
+	echo "Please enter the name of the account: "
+	read account
+	sed -i "/^$account:/d" passwords.txt  # Deleting the account and password from the file
+	echo "Password deleted successfully"
+	fi
+	;;
+
+	4) # Generating a random password    
+	./RPG ;;
+
+	5) # Quitting
+	echo "Exiting script..."
+	exit
+	;;
+
+	*) # Invalid choice
+	echo "Invalid choice, please try again"
+	;;
+	esac
+done
+
