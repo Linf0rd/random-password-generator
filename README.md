@@ -1,3 +1,6 @@
+![image](https://github.com/Linf0rd/random-password-generator/assets/122806756/6ab8404c-4ba5-4d7e-bae6-6068a5050a80)
+
+
 # Random Password Generator
 This is a Bash script that generates random passwords and allows the user to store them in a password manager.
 
@@ -19,6 +22,10 @@ This is a Bash script that generates random passwords and allows the user to sto
 2. Launch Password Manager: Allows the user to launch the password manager.
 3. Exit: Exits the script.
 
+
+#
+
+![image](https://github.com/Linf0rd/random-password-generator/assets/122806756/4d06cf84-1bfc-4f40-a6a3-cc18f05c56b1)
 
 # Random Password Manager
 The password manager is a separate Bash script that allows the user to view and manage the passwords they have generated using the password generator script. The password manager provides the following options:
